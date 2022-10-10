@@ -1,7 +1,7 @@
 import { createClient } from "redis";
 
 const client = createClient({
-  url: "redis://alice:foobared@ip-10-0-17-15.ec2.internal:6379",
+  url: "redis://ip-10-0-17-15.ec2.internal:6379",
 });
 
 client.on("error", (err) => console.log("Redis Client Error", err));
