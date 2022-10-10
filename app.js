@@ -10,7 +10,11 @@ const redis = Redis.createClient({
   port: 6379,
 });
 
-console.log(redis)
+
+redis.hSet("tests:eka", [
+    "active", 1,
+    "show", 2
+])
 
 redis.on("error", (err) => console.log("Redis Client Error", err));
 
