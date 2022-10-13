@@ -1,12 +1,11 @@
-import { createClient } from "redis";
+const express = require('express')
+const app = express()
+const port = 3000
 
-const client = createClient({
-  url: "redis://alice:foobared@ip-10-0-17-15.ec2.internal:6379",
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-client.on("error", (err) => console.log("Redis Client Error", err));
-
-await client.connect();
-
-await client.set("key", "value");
-const value = await client.get("key");
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
