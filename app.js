@@ -11,7 +11,7 @@ const port = 3000
 
 
 // create the connection, specify bluebird as Promise
-const connection = await mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DB_ENDPOINT,
   port: process.env.DB_PORT,
   user: process.env.DB_USERNAME,
