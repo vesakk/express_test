@@ -33,6 +33,19 @@ db_conn.promise().query("SELECT 1")
 
 
 app.get('/', (req, res) => {
+
+  db_conn
+    .promise()
+    .query("SELECT 1")
+    .then(data => {
+
+      res.status(200).send(data)
+
+    }).catch(err => {
+      res.status(400).json(err)
+    })
+
+
   res.send('Hello World!')
 })
 
