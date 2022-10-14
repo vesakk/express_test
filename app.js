@@ -10,15 +10,29 @@ const app = express()
 const port = 3000
 
 
-// create the connection, specify bluebird as Promise
-const connection = mysql.createConnection({
+// Create the connection, specify bluebird as Promise
+const db_connection = mysql.createConnection({
   host: process.env.DB_ENDPOINT,
   port: process.env.DB_PORT,
   user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   Promise: bluebird
 });
 
+
+dbConn.queryAsync(`
+
+  SELECT
+      *
+  FROM
+    table
+
+`).then(result => {
+
+  console.log(result);
+
+});
 
 
 app.get('/', (req, res) => {
