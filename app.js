@@ -3,7 +3,7 @@ require('dotenv').config({
 })
 
 const express = require('express')
-const mysql = require('mysql2/promise')
+const mysql = require('mysql2')
 const bluebird = require('bluebird');
 
 const app = express()
@@ -16,8 +16,7 @@ const db_conn = mysql.createConnection({
   port: process.env.DB_PORT,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  Promise: bluebird
+  database: process.env.DB_NAME
 });
 
 
