@@ -27,7 +27,7 @@ db_conn.promise().query("SELECT 1")
 
   })
   .catch(console.log)
-  .then(() => con.end())
+  .then(() => db_conn.end())
 
 
 
