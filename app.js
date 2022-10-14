@@ -11,7 +11,7 @@ const port = 3000
 
 
 // Create the connection, specify bluebird as Promise
-const db_connection = mysql.createConnection({
+const db_conn = mysql.createConnection({
   host: process.env.DB_ENDPOINT,
   port: process.env.DB_PORT,
   user: process.env.DB_USERNAME,
@@ -21,18 +21,16 @@ const db_connection = mysql.createConnection({
 });
 
 
-dbConn.queryAsync(`
+db_conn.promise().query("SELECT 1")
+  .then(([rows, fields]) => {
 
-  SELECT
-      *
-  FROM
-    table
+    console.log(rows)
 
-`).then(result => {
+  })
+  .catch(console.log)
+  .then(() => con.end())
 
-  console.log(result);
 
-});
 
 
 app.get('/', (req, res) => {
